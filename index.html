@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,11 +13,11 @@
             const decimalPoint = document.getElementById('decimalPoint').value
             document.getElementById('result').value = calculate(e1, e2, op, decimalPoint).getValue();
         }
-        function calculate(e1, e2, op, decimalPoint){
+        function calculate(e1, e2, op, decimalPoint) {
             // if(isNaN(e1) || isNaN(e2)){
-                // return alert("数字をいれてください")
+            // return alert("数字をいれてください")
             // }
-            if(isNaN(e1)){
+            if (isNaN(e1)) {
                 return alert("数字をいれてください")
             }
             // var f1 = bigDecimal(e1)
@@ -24,8 +25,8 @@
             const f2 = new bigDecimal(e2);
             switch (op) {
                 case 'plus':
-                    // return decimalPointCalculate(f1.add(f2), decimalPoint)
-                    return decimalPointCalculate(f1.subtract(f2), decimalPoint)
+                    return decimalPointCalculate(f1.add(f2), decimalPoint)
+                // return decimalPointCalculate(f1.subtract(f2), decimalPoint)
                 case 'minus':
                     return decimalPointCalculate(f1.subtract(f2), decimalPoint)
                 case 'multiply':
@@ -35,52 +36,54 @@
                     return decimalPointCalculate(f1.multiply(f2), decimalPoint)
                 case 'square':
                     return decimalPointCalculate(f1.multiply(f1), decimalPoint)
-                default :
+                default:
                     return alert("数字をいれてください")
             }
         }
-        function decimalPointCalculate(value, decimalPoint){
-            if(decimalPoint === 'ceil'){
+        function decimalPointCalculate(value, decimalPoint) {
+            if (decimalPoint === 'ceil') {
                 // return value.ceil()
                 return value.floor()
             }
-            if(decimalPoint === 'floor'){
+            if (decimalPoint === 'floor') {
                 return value.floor()
             }
-            if(decimalPoint === 'round'){
+            if (decimalPoint === 'round') {
                 // return new bigDecimal(Math.round(value.getValue()))
                 return value.floor()
             }
             return value
         }
-        function disableSecond(){
+        function disableSecond() {
             const op = document.getElementById('operator').value;
-            if(op === 'square'){
+            if (op === 'square') {
                 document.getElementById('second').disabled = true
             }
-            else{
+            else {
                 document.getElementById('second').disabled = false
             }
         }
     </script>
 </head>
+
 <body>
-<label for="first"></label><input type="text" id="first">
-<label for="operator"></label><select id="operator" onchange="disableSecond()">
-    <option id="plus" value="plus">+</option>
-    <option id="minus" value="minus">-</option>
-    <option id="multiply" value="multiply">×</option>
-    <option id="mod" value="mod">÷</option>
-    <option id="square" value="square">x²</option>
-</select>
-<label for="second"></label><input type="text" id="second">
-<input type="button" id="execute" value="=" onclick="f()">
-<label for="result"></label><input type="text" id="result">
-<label for="decimalPoint"></label><select id="decimalPoint">
-    <option id="raw" value="raw">小数点以下そのまま</option>
-    <option id="floor" value="floor">小数点以下切り捨て</option>
-    <option id="ceil" value="ceil">小数点以下切り上げ</option>
-    <option id="round" value="round">小数点以下四捨五入</option>
-</select>
+    <label for="first"></label><input type="text" id="first">
+    <label for="operator"></label><select id="operator" onchange="disableSecond()">
+        <option id="plus" value="plus">+</option>
+        <option id="minus" value="minus">-</option>
+        <option id="multiply" value="multiply">×</option>
+        <option id="mod" value="mod">÷</option>
+        <option id="square" value="square">x²</option>
+    </select>
+    <label for="second"></label><input type="text" id="second">
+    <input type="button" id="execute" value="=" onclick="f()">
+    <label for="result"></label><input type="text" id="result">
+    <label for="decimalPoint"></label><select id="decimalPoint">
+        <option id="raw" value="raw">小数点以下そのまま</option>
+        <option id="floor" value="floor">小数点以下切り捨て</option>
+        <option id="ceil" value="ceil">小数点以下切り上げ</option>
+        <option id="round" value="round">小数点以下四捨五入</option>
+    </select>
 </body>
+
 </html>
